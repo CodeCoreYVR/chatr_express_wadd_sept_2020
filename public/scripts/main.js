@@ -140,7 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     messagesUl.addEventListener('click', event => {
         const {target} = event //Element that triggered the event
+        // We need to delegate the event to the <ul> because only
+	    // the list exists when the DOM first loads.
+	    // If the target we clicked on matches the selector,
+	    // the message will be deleted.
         if(target.matches('.delete-button')){
+            // Use ‘dataset’ property to read ‘data-*’ attributes.
             Message.delete(target.dataset.id).then(()=>{
                 console.log("Message deleted!")
                 refreshMessages()
