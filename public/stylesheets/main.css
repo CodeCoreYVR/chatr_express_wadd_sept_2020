@@ -43,6 +43,7 @@ textarea {
   padding: 10px;
 }
 
+
 input[type='submit'] {
   display: inline-block;
   margin-bottom: 0;
@@ -64,4 +65,7 @@ input[type='submit'] {
 .delete-button {
   background-color: #e67e22;
   color: #ffffff;
+}
+.flagged {
+  border: 1px solid red;
 }
