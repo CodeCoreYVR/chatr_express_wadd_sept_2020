@@ -52,3 +52,29 @@ fetch('http://localhost:3434/messages')
     // If the data is specifically an array of objects, we can use 'console.table'
     // to output as a table format. 
     .then(console.table)
+
+
+
+
+
+    document.addEventListener('DOMContentLoaded', () =>{
+        const messagesUl = document.querySelector('#messages')
+
+        const refreshMessages = () => {
+            fetch('http://localhost:3434/messages')
+            .then(response => response.json())
+            .then(messages =>{
+    
+                messagesUl.innerHTML = messages
+                .map(message => {
+                    return `
+                        <li>
+                            <strong>#${message.id}</strong>${message.body}<br>
+                        </li>
+                    `
+                })
+                .join('')
+            })
+        }
+        setInterval(refreshMessages, 500)
+    })
